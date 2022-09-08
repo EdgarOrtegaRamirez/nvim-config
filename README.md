@@ -9,6 +9,10 @@
 
 ## Preinstall 
 
+### Install NeoVim 
+
+Install [NeoVim](https://github.com/neovim/neovim/wiki/Installing-Neovim)
+
 ### Vim-Plug
 Install [vim-plug](https://github.com/junegunn/vim-plug) for NVIM version
 
