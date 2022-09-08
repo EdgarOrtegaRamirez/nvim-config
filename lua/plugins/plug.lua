@@ -1,5 +1,11 @@
 local M = {}
 
+M.begin = vim.fn['plug#begin']
+
+M.register = vim.fn['plug#']
+
+M.finalize = vim.fn['plug#end']
+
 M.install_plugins = function()
   vim.cmd('PlugInstall')
 end

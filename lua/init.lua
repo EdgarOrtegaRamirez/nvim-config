@@ -1,5 +1,4 @@
--- Speed up loading Lua modules to improve startup time.
-require('impatient')
+local plug = require('.plugins.plug')
 
 -- Use comma as the leader key
 vim.g.mapleader = ","
@@ -67,7 +66,121 @@ vim.g.loaded_perl_provider = 0
 vim.opt.shortmess:append 'c'
 vim.opt.formatoptions:remove 't' -- do not automatically wrap text when typing
 
-require('ui')
+-- undercurl support
+vim.o.t_Cs = [[\e[4:3m]]
+vim.o.t_Ce = [[\e[4:0m]]
+-- underdouble support
+vim.o.t_Us = [[\e[4:2m]]
+vim.o.t_ds = [[\e[4:4m]]
+vim.o.t_Ds = [[\e[4:5m]]
+-- Terminal True Color Support
+vim.o.t_8f = [[\<Esc>[38;2;%lu;%lu;%lum]]
+vim.o.t_8b = [[\<Esc>[48;2;%lu;%lu;%lum]]
+
+vim.g.better_whitespace_filetypes_blacklist = { 'NvimTree', 'diff', 'git', 'gitcommit', 'unite', 'qf', 'help', 'markdown',
+  'fugitive' }
+
+vim.g.esearch = {
+  -- Use regex matching with the smart case mode by default and avoid matching text-objects.
+  case = 'smart',
+  -- Set the initial pattern content using the highlighted search pattern (if v:hlsearch is true), the last searched pattern or the clipboard content.
+  prefill = { 'hlsearch', 'last', 'clipboard', },
+  -- Override the default files and directories to determine your project root. Set to blank to always use the current working directory.
+  root_markers = { '.git', 'Makefile', 'node_modules', 'Gemfile', 'package.json', },
+}
+
+-- VimPlug
+plug.begin('~/.local/share/nvim/plugged')
+-- vim.call('plug#begin', '~/.local/share/nvim/plugged')
+
+-- start lua plugins
+plug.register('folke/persistence.nvim')
+plug.register('j-hui/fidget.nvim')
+plug.register('WhoIsSethDaniel/toggle-lsp-diagnostics.nvim')
+plug.register('catppuccin/nvim', { as = 'catppuccin' })
+plug.register('MunifTanjim/nui.nvim')
+plug.register('antoinemadec/FixCursorHold.nvim')
+plug.register('kyazdani42/nvim-web-devicons')
+plug.register('folke/trouble.nvim')
+plug.register('kyazdani42/nvim-tree.lua')
+plug.register('norcalli/nvim-colorizer.lua')
+plug.register('nvim-treesitter/nvim-treesitter', { ['do'] = ':TSUpdate' })
+plug.register('nvim-treesitter/nvim-treesitter-context')
+
+-- LSP
+plug.register('jose-elias-alvarez/null-ls.nvim')
+plug.register('folke/lsp-colors.nvim')
+plug.register('neovim/nvim-lspconfig')
+plug.register('williamboman/mason.nvim')
+plug.register('williamboman/mason-lspconfig.nvim')
+plug.register('ray-x/lsp_signature.nvim')
+
+-- Autocompletion
+plug.register('hrsh7th/cmp-nvim-lsp')
+plug.register('hrsh7th/cmp-nvim-lsp-signature-help')
+plug.register('glepnir/lspsaga.nvim')
+plug.register('onsails/lspkind.nvim')
+plug.register('hrsh7th/nvim-cmp')
+plug.register('hrsh7th/cmp-buffer')
+plug.register('hrsh7th/cmp-path')
+plug.register('hrsh7th/cmp-cmdline')
+plug.register('hrsh7th/cmp-emoji')
+plug.register('ray-x/cmp-treesitter')
+plug.register('saadparwaiz1/cmp_luasnip')
+
+plug.register('numToStr/Comment.nvim')
+plug.register('ur4ltz/surround.nvim')
+plug.register('folke/which-key.nvim')
+plug.register('nathom/filetype.nvim')
+plug.register('nvim-lua/popup.nvim')
+plug.register('nvim-lua/plenary.nvim')
+plug.register('nvim-telescope/telescope.nvim')
+plug.register('nvim-telescope/telescope-ui-select.nvim')
+plug.register('nvim-telescope/telescope-fzy-native.nvim')
+plug.register('https://gitlab.com/yorickpeterse/nvim-pqf.git')
+plug.register('alvarosevilla95/luatab.nvim')
+plug.register('lukas-reineke/indent-blankline.nvim')
+plug.register('lewis6991/gitsigns.nvim')
+plug.register('L3MON4D3/LuaSnip')
+plug.register('rafamadriz/friendly-snippets')
+plug.register('feline-nvim/feline.nvim')
+plug.register('gelguy/wilder.nvim')
+plug.register('rcarriga/nvim-notify')
+plug.register('luukvbaal/stabilize.nvim')
+plug.register('nacro90/numb.nvim')
+plug.register('stevearc/dressing.nvim')
+plug.register('iamcco/markdown-preview.nvim')
+plug.register('beauwilliams/focus.nvim')
+plug.register('kevinhwang91/nvim-hlslens')
+plug.register('akinsho/git-conflict.nvim')
+plug.register('echasnovski/mini.nvim')
+plug.register('kosayoda/nvim-lightbulb')
+plug.register('mortepau/codicons.nvim')
+plug.register('lewis6991/impatient.nvim')
+-- end lua plugins
+
+plug.register('pantharshit00/vim-prisma')
+plug.register('janko-m/vim-test')
+plug.register('eugen0329/vim-esearch')
+-- plug.register('editorconfig/editorconfig-vim')
+plug.register('tpope/vim-git')
+plug.register('tpope/vim-fugitive')
+plug.register('tpope/vim-dispatch')
+plug.register('christoomey/vim-tmux-navigator')
+plug.register('ntpeters/vim-better-whitespace')
+plug.register('mileszs/ack.vim')
+plug.register('tpope/vim-rails')
+-- plug.register('sainnhe/gruvbox-material')
+-- plug.register('eddyekofo94/gruvbox-flat.nvim')
+plug.register('tpope/vim-repeat')
+plug.register('andymass/vim-matchup')
+
+plug.finalize()
+
+-- Speed up loading Lua modules to improve startup time.
+require('impatient')
+
+require('.ui')
 
 -- Debug with
 -- print(vim.inspect(var))
@@ -203,8 +316,9 @@ require('mini.cursorword').setup({
   delay = 300,
 })
 
-require('lsp')
-require('completion')
-require('mappings')
+require('.lsp')
+require('.completion')
+require('.mappings')
 
 require('persistence').setup()
+
