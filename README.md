@@ -46,7 +46,7 @@ Open `nvim` and enter the following:
 :checkhealth
 ```
 
-## Install LSP (Language Service Protocol)
+## Install LSP (Language Server Protocol) Servers
 
 Facilitates features like go-to-definition, find-references, hover, completion, rename, format, refactor, etc., using semantic whole-project analysis. 
 
