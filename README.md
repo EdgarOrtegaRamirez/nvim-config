@@ -57,7 +57,7 @@ Neovim dotfile uses [Mason.nvim](https://github.com/williamboman/mason.nvim) to 
 
 ## Copy & Pase Support
 
-You'll probably notice you don't have support for copy/paste also that python and node haven't been setup
+You'll probably notice you don't have support for copy/paste, also that Python and Node.js haven't been setup.
 
 So let's fix that
 
