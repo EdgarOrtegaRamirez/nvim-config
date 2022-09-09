@@ -50,7 +50,7 @@ Open `nvim` and enter the following:
 
 Facilitates features like go-to-definition, find-references, hover, completion, rename, format, refactor, etc., using semantic whole-project analysis. 
 
-Neovim dotfile uses [Mason.nvim](https://github.com/williamboman/mason.nvim) to easly manage LSP Servers. Here's [the complete LSP list](https://github.com/williamboman/mason-lspconfig.nvim#available-lsp-servers). To install LSP run `:Mason`.
+Neovim dotfile uses [Mason.nvim](https://github.com/williamboman/mason.nvim) to easly manage LSP Servers and other tools. Here's [the complete LSP list](https://github.com/williamboman/mason-lspconfig.nvim#available-lsp-servers). Run `:Mason` to see all of the available packages to install.
 
 ![mason](https://user-images.githubusercontent.com/6705160/177617680-d62caf26-f253-4ace-ab57-4b590595adca.png)
 
