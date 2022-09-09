@@ -46,7 +46,18 @@ Open `nvim` and enter the following:
 :checkhealth
 ```
 
-You'll probably notice you don't have support for copy/paste also that python and node haven't been setup
+## Install LSP (Language Server Protocol) Servers
+
+Facilitates features like go-to-definition, find-references, hover, completion, rename, format, refactor, etc., using semantic whole-project analysis. 
+
+Neovim dotfile uses [Mason.nvim](https://github.com/williamboman/mason.nvim) to easly manage LSP Servers and other tools. Here's [the complete LSP list](https://github.com/williamboman/mason-lspconfig.nvim#available-lsp-servers). Run `:Mason` to see all of the available packages to install.
+
+![mason](https://user-images.githubusercontent.com/6705160/177617680-d62caf26-f253-4ace-ab57-4b590595adca.png)
+
+
+## Copy & Pase Support
+
+You'll probably notice you don't have support for copy/paste, also that Python and Node.js haven't been setup.
 
 So let's fix that
 
@@ -86,6 +97,8 @@ Next we need to install python support (node is optional)
 
 - [codicon](https://github.com/microsoft/vscode-codicons/raw/main/dist/codicon.ttf)
 - [An emoji font](https://github.com/googlefonts/noto-emoji/blob/main/fonts/NotoColorEmoji.ttf)
+- A patched version of [Recursive font](https://www.recursive.design/) with [Nerdfont icons](https://www.nerdfonts.com/) added. Go to the `assets/fonts` folder and download the
+  `recursive-nerdfont.zip`.
 
 After moving fonts to `~/.local/share/fonts/`
 
@@ -93,9 +106,9 @@ Run: `$ fc-cache -f -v`
 
 ## Documentation
 
-### Installed Plugins (TODO)
-### Key Mapping (TODO)
-
+### [Installed Plugins](docs/installed_plugins.md) 📦
+### [Key Mapping](docs/mappings.md) ⌨️
+ 
 ## Author
 
 👤 **Edgar Ortega**
