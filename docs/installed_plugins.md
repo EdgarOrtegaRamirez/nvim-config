@@ -36,7 +36,6 @@ Installed plugins using Plug Nvim packager
 | Lspsaga                     | A light-weight lsp plugin based on neovim's built-in lsp with a highly performant UI.                                                                                             | [glepnir/lspsaga.nvim](https://github.com/glepnir/lspsaga.nvim)                               |
 | Lspkind                     | This tiny plugin adds vscode-like pictograms to neovim built-in lsp                                                                                                               | [onsails/lspkind.nvim](https://github.com/onsails/lspkind.nvim)                               |
 | nvim-cmp                    | A completion engine plugin for neovim written in Lua. Completion sources are installed from external repositories and "sourced".                                                  | [hrsh7th/nvim-cmp](https://github.com/hrsh7th/nvim-cmp)                                       |
-|                             |                                                                                                                                                                                   |                                                                                               |
 
 ## Autocompletion
 
