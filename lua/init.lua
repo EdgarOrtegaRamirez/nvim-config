@@ -157,6 +157,7 @@ plug.register('echasnovski/mini.nvim')
 plug.register('kosayoda/nvim-lightbulb')
 plug.register('mortepau/codicons.nvim')
 plug.register('lewis6991/impatient.nvim')
+plug.register('windwp/nvim-autopairs')
 -- end lua plugins
 
 plug.register('pantharshit00/vim-prisma')
@@ -173,7 +174,7 @@ plug.register('tpope/vim-rails')
 -- plug.register('sainnhe/gruvbox-material')
 -- plug.register('eddyekofo94/gruvbox-flat.nvim')
 plug.register('tpope/vim-repeat')
-plug.register('andymass/vim-matchup')
+-- plug.register('andymass/vim-matchup')
 
 plug.finalize()
 
@@ -314,6 +315,15 @@ require('nvim-treesitter.configs').setup({
 require('mini.cursorword').setup({
   -- Delay (in ms) between when cursor moved and when highlighting appeared
   delay = 300,
+})
+require("nvim-autopairs").setup({
+  disable_filetype = { "TelescopePrompt", "vim" },
+  -- disable when recording or executing a macro
+  disable_in_macro = true,
+  -- use treesitter to check for a pair
+  check_ts = true,
+  -- Don't add pairs if it already has a close pair in the same line
+  enable_check_bracket_line = false,
 })
 
 require('.lsp')
