@@ -97,7 +97,7 @@ Next we need to install python support (node is optional)
 
 - [codicon](https://github.com/microsoft/vscode-codicons/raw/main/dist/codicon.ttf)
 - [An emoji font](https://github.com/googlefonts/noto-emoji/blob/main/fonts/NotoColorEmoji.ttf)
-- For custom [Recursive fonts](https://www.recursive.design/) with [Nerdfont icons](https://www.nerdfonts.com/), go to the `assets/fonts` folder and download the
+- A patched version of [Recursive font](https://www.recursive.design/) with [Nerdfont icons](https://www.nerdfonts.com/) added. Go to the `assets/fonts` folder and download the
   `recursive-nerdfont.zip`.
 
 After moving fonts to `~/.local/share/fonts/`
