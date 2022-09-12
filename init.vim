@@ -1,13 +1,3 @@
-" disable arrow navigation keys
-inoremap  <Up>    <NOP>
-inoremap  <Down>  <NOP>
-inoremap  <Left>  <NOP>
-inoremap  <Right> <NOP>
-noremap   <Up>    <NOP>
-noremap   <Down>  <NOP>
-noremap   <Left>  <NOP>
-noremap   <Right> <NOP>
-
 " Display vertical column at 120 characters
 highlight ColorColumn ctermbg=8
 

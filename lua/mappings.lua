@@ -10,6 +10,12 @@ local wk = require('which-key')
 local gitsigns = require('gitsigns')
 local persistence = require('persistence')
 
+-- Disable arrow navigation keys. Use hjkl
+vim.keymap.set({"i", "n"}, "<UP>", "<NOP>", { silent = true })
+vim.keymap.set({"i", "n"}, "<DOWn>", "<NOP>", { silent = true })
+vim.keymap.set({"i", "n"}, "<LEFT>", "<NOP>", { silent = true })
+vim.keymap.set({"i", "n"}, "<RIGHT>", "<NOP>", { silent = true })
+
 wk.setup({})
 
 wk.register({
@@ -104,6 +110,7 @@ local hlslens_opts = { noremap = true, silent = true }
 -- local opts = { noremap = true, silent = true }
 local saga_opts = { noremap = true, silent = true }
 
+-- hlslens - search
 vim.keymap.set('n', 'n', [[<Cmd>execute('normal! ' . v:count1 . 'n')<cr><Cmd>lua require('hlslens').start()<cr>]],
   hlslens_opts)
 vim.keymap.set('n', 'N', [[<Cmd>execute('normal! ' . v:count1 . 'N')<cr><Cmd>lua require('hlslens').start()<cr>]],
@@ -123,7 +130,6 @@ vim.keymap.set('n', '*', [[*<Cmd>lua require('hlslens').start()<cr>]], hlslens_o
 -- vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
 -- vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
 -- vim.keymap.set('n', '<Leader>lr', vim.lsp.buf.rename, opts)
--- vim.keymap.set('n', '<Leader>lf', vim.lsp.buf.code_action, opts)
 -- vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, saga_opts)
 -- vim.keymap.set('n', '<Leader>le', vim.lsp.diagnostic.show_line_diagnostics, opts)
 -- vim.keymap.set('n', '[d', vim.lsp.diagnostic.goto_prev, opts)
@@ -135,7 +141,6 @@ vim.keymap.set("n", "gd", lsp.preview_definition, { silent = true })
 vim.keymap.set('n', 'gD', vim.lsp.buf.definition, saga_opts)
 -- format file
 vim.keymap.set('n', '<space>f', lsp.format_file, saga_opts)
-
 
 -- Lsp finder find the symbol definition implement reference
 -- when you use action in finder like open vsplit then you can
