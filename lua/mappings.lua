@@ -2,7 +2,6 @@ local tabs = require('.plugins.tabs')
 local nvimtree = require('.plugins.nvimtree')
 local plug = require('.plugins.plug')
 local git_conflict = require('.plugins.git_conflict')
-local highlight = require('.plugins.highlight')
 local lsp = require('.plugins.lsp')
 
 local telescope_builtin = require('telescope.builtin')
@@ -49,7 +48,7 @@ wk.register({
     },
   },
   ['<leader>'] = {
-    ['<space>'] = { highlight.no_highlight, 'No highlight' },
+    ['<space>'] = { ':noh<CR>', 'No highlight', silent = true, noremap = true },
     l = { telescope_builtin.find_files, 'Find file' },
     f = {
       name = 'Files',
