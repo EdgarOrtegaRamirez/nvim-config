@@ -9,12 +9,12 @@
 
 ## Preinstall 
 
-### Install NeoVim 
+### Install Neovim
 
-Install [NeoVim](https://github.com/neovim/neovim/wiki/Installing-Neovim)
+Install [Neovim](https://github.com/neovim/neovim/wiki/Installing-Neovim)
 
 ### Vim-Plug
-Install [vim-plug](https://github.com/junegunn/vim-plug) for NVIM version
+Install [vim-plug](https://github.com/junegunn/vim-plug#neovim) for Neovim
 
 ```
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
@@ -26,7 +26,7 @@ Here's a [python installation guide](https://realpython.com/installing-python/)
 
 ### Iterm (For Mac Users only)
 
-[iTerm2](https://iterm2.com/) is a replacement for Terminal and the successor to iTerm. nvim theme catpuccin won't work for mac terminal app.
+[iTerm2](https://iterm2.com/) is a replacement for Terminal and the successor to iTerm. The Catppuccin theme won't work for macOS Terminal app.
 
 ## Install 
 
@@ -36,7 +36,7 @@ Go to `~/.config` folder and clone this repository
 git clone git@github.com:charly-palencia/nvim-config.git ~/.config/nvim
 ```
 
-Then, open NeoVim using `nvim` and run the command `:PlugInstall`. It will install all the plugins into `./init.vim` file.
+Then, open Neovim using `nvim` and run the command `:PlugInstall`. It will install all the plugins into `./init.vim` file.
 
 ## Get healthy
 
@@ -94,7 +94,6 @@ Next we need to install python support (node is optional)
 ## Fonts
 
 - [A nerd font](https://github.com/ryanoasis/nerd-fonts)
-
 - [codicon](https://github.com/microsoft/vscode-codicons/raw/main/dist/codicon.ttf)
 - [An emoji font](https://github.com/googlefonts/noto-emoji/blob/main/fonts/NotoColorEmoji.ttf)
 - A patched version of [Recursive font](https://www.recursive.design/) with [Nerdfont icons](https://www.nerdfonts.com/) added. Go to the `assets/fonts` folder and download the
@@ -119,12 +118,9 @@ Run: `$ fc-cache -f -v`
 
 Contributions, issues and feature requests are welcome!
 
-Feel free to check [issues page](https://github.com/EdgarOrtegaRamirez/nvim-config/issues). You can also take a look at the [contributing guide](https://github.com/EdgarOrtegaRamirez/nvim-config/blob/master/CONTRIBUTING.md).
+Feel free to check [issues page](https://github.com/EdgarOrtegaRamirez/nvim-config/issues).
+You can also take a look at the [contributing guide](https://github.com/EdgarOrtegaRamirez/nvim-config/blob/master/CONTRIBUTING.md).
 
 ## Show your support
 
 Give a ⭐️ if this project helped you!
-
-
-
- 

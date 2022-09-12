@@ -47,6 +47,7 @@ vim.opt.hlsearch = true -- Keep matches highlighted
 vim.opt.showcmd = true -- Show already typed keys when more are expected
 vim.opt.laststatus = 3 -- force the status line and tab line to always display
 vim.opt.clipboard = 'unnamedplus' -- :h clipboard-unnamedplus
+vim.opt.spellsuggest = 'best,9' -- Show nine spell checking candidates at most
 vim.opt.listchars = { -- Show non-printable characters
   -- eol = '¬',
   tab = '▸ ',
@@ -108,6 +109,7 @@ plug.register('norcalli/nvim-colorizer.lua')
 plug.register('nvim-treesitter/nvim-treesitter', { ['do'] = ':TSUpdate' })
 plug.register('nvim-treesitter/nvim-treesitter-context')
 plug.register('JoosepAlviste/nvim-ts-context-commentstring')
+plug.register('windwp/nvim-ts-autotag')
 
 -- LSP
 plug.register('jose-elias-alvarez/null-ls.nvim')
@@ -156,13 +158,12 @@ plug.register('beauwilliams/focus.nvim')
 plug.register('kevinhwang91/nvim-hlslens')
 plug.register('akinsho/git-conflict.nvim')
 plug.register('echasnovski/mini.nvim')
-plug.register('kosayoda/nvim-lightbulb')
+-- plug.register('kosayoda/nvim-lightbulb')
 plug.register('mortepau/codicons.nvim')
 plug.register('lewis6991/impatient.nvim')
-plug.register('windwp/nvim-ts-autotag')
 -- end lua plugins
 
-plug.register('pantharshit00/vim-prisma')
+-- plug.register('pantharshit00/vim-prisma')
 plug.register('janko-m/vim-test')
 plug.register('eugen0329/vim-esearch')
 -- plug.register('editorconfig/editorconfig-vim')
@@ -176,7 +177,7 @@ plug.register('tpope/vim-rails')
 -- plug.register('sainnhe/gruvbox-material')
 -- plug.register('eddyekofo94/gruvbox-flat.nvim')
 plug.register('tpope/vim-repeat')
-plug.register('andymass/vim-matchup')
+-- plug.register('andymass/vim-matchup')
 
 plug.finalize()
 
@@ -222,6 +223,7 @@ require('nvim-tree').setup({
 
 local telescope = require('telescope')
 telescope.setup({
+  color_devicons = true,
   extensions = {
     ['ui-select'] = {
       require('telescope.themes').get_dropdown({})
@@ -281,8 +283,9 @@ require('treesitter-context').setup({})
 
 require('nvim-treesitter.configs').setup({
   -- A list of parser names, or 'all'
-  ensure_installed = { 'bash', 'css', 'dockerfile', 'html', 'javascript', 'json', 'json5', 'lua', 'markdown', 'ruby',
-    'typescript', 'vim', 'yaml' },
+  ensure_installed = { 'bash', 'css', 'dockerfile', 'html', 'javascript', 'jsdoc', 'json', 'jsonc', 'json5', 'lua',
+    'markdown',
+    'ruby', 'typescript', 'vim', 'yaml' },
 
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = false,
@@ -322,6 +325,21 @@ require('nvim-treesitter.configs').setup({
     enable = true
   },
 })
+
+vim.o.foldmethod = 'expr'
+vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
+
+-- Display vertical column at 120 characters
+vim.cmd([[highlight ColorColumn ctermbg=8]])
+
+-- Spell check for Markdown and Git commit messages
+vim.api.nvim_create_autocmd(
+  { "FileType" },
+  {
+    pattern = { "markdown", "text", "gitcommit", "gitrebase" },
+    command = "setlocal spell"
+  }
+)
 
 require('.lsp')
 require('.completion')
