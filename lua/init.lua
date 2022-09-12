@@ -1,3 +1,6 @@
+-- Debug with
+-- print(vim.inspect(var))
+
 local plug = require('.plugins.plug')
 
 -- Use comma as the leader key
@@ -90,7 +93,6 @@ vim.g.esearch = {
 
 -- VimPlug
 plug.begin('~/.local/share/nvim/plugged')
--- vim.call('plug#begin', '~/.local/share/nvim/plugged')
 
 -- start lua plugins
 plug.register('folke/persistence.nvim')
@@ -180,9 +182,6 @@ plug.finalize()
 require('impatient')
 
 require('.ui')
-
--- Debug with
--- print(vim.inspect(var))
 
 require('numb').setup()
 
@@ -320,4 +319,3 @@ require('.completion')
 require('.mappings')
 
 require('persistence').setup()
-

@@ -29,7 +29,7 @@ wk.register({
       -- d diagnostic
       -- h hover doc/help
       -- f = { saga_finder.lsp_finder, 'Find cursor word definition and reference', silent = true, noremap = true },
-      -- p = { saga_definition.preview_definition, 'Preview definition', silent = true, noremap = true },
+      -- p = { saga_definition.peek_definition, 'Preview definition', silent = true, noremap = true },
       -- h = { saga_hover.render_hover_doc, 'Hover Doc', silent = true, noremap = true },
       -- s = { function() saga_signature.signature_help() end, 'Signature Help', silent = true, noremap = true },
       -- cd = { saga_diagnostic.show_line_diagnostics, 'Show line diagnostics', silent = true, noremap = true },
@@ -137,7 +137,7 @@ vim.keymap.set('n', '*', [[*<Cmd>lua require('hlslens').start()<cr>]], hlslens_o
 -- vim.keymap.set('n', '<Leader>lq', vim.lsp.diagnostic.set_loclist, opts)
 
 -- Definition preview
-vim.keymap.set("n", "gd", lsp.preview_definition, { silent = true })
+vim.keymap.set("n", "gd", lsp.peek_definition, { silent = true })
 vim.keymap.set('n', 'gD', vim.lsp.buf.definition, saga_opts)
 -- format file
 vim.keymap.set('n', '<space>f', lsp.format_file, saga_opts)
@@ -149,17 +149,15 @@ vim.keymap.set('n', '<space>f', lsp.format_file, saga_opts)
 vim.keymap.set("n", "gh", lsp.finder, { silent = true })
 
 -- Code action
-vim.keymap.set("n", "<leader>ca", lsp.code_actions, { silent = true })
-vim.keymap.set("v", "<leader>ca", "<cmd><C-U>Lspsaga range_code_action<CR>", { silent = true })
+vim.keymap.set({"n", "v"}, "<leader>ca", lsp.code_actions, { silent = true })
 
 -- Rename
 vim.keymap.set("n", "gr", lsp.rename, { silent = true })
 
-
 -- Show line diagnostics
 vim.keymap.set("n", "<leader>cd", lsp.diagnostic.show_line_diagnostics, { silent = true })
 
--- Show cursor diagnostic
+-- Show cursor diagnostic (disabled because we are using line diagnostics)
 -- vim.keymap.set("n", "<leader>cd", "<cmd>Lspsaga show_cursor_diagnostics<CR>", { silent = true })
 
 -- Diagnsotic jump can use `<c-o>` to jump back
@@ -179,14 +177,6 @@ vim.keymap.set("n", "]e", lsp.diagnostic.go_to_next, { silent = true })
 -- vim.keymap.set("n", "<A-d>", "<cmd>Lspsaga open_floaterm lazygit<CR>", { silent = true })
 
 -- local saga_opts = { silent = true, noremap = true }
--- vim.keymap.set('n', '<leader>ca', saga_codeaction.code_action, saga_opts)
 -- -- vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, saga_opts)
--- vim.keymap.set('v', '<leader>ca', function()
---   vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<C-U>', true, false, true))
---   saga_action.range_code_action()
--- end, saga_opts)
 -- -- scroll down hover doc or scroll in definition preview
--- vim.keymap.set("n", "<C-f>", function() saga_action.smart_scroll_with_saga(1) end, { silent = true })
--- -- scroll up hover doc
--- vim.keymap.set("n", "<C-b>", function() saga_action.smart_scroll_with_saga(-1) end, { silent = true })
 -- vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, saga_opts)

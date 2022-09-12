@@ -10,7 +10,7 @@ M.code_actions = make_saga_fn('code_action')
 
 M.rename = make_saga_fn('rename')
 
-M.preview_definition = make_saga_fn('preview_definition')
+M.peek_definition = make_saga_fn('peek_definition')
 
 
 M.diagnostic = {}

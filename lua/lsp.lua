@@ -20,9 +20,10 @@ for _, sign in ipairs(diagnostic_signs) do
 end
 
 lsp_saga.init_lsp_saga({
+  -- Options with default value
+  -- "single" | "double" | "rounded" | "bold" | "plus"
+  border_style = "single",
   diagnostic_header = { " ", " ", " ", "ﴞ " },
-  -- show diagnostic source
-  show_diagnostic_source = true,
   --the range of 0 for fully opaque window (disabled) to 100 for fully
   --transparent background. Values between 0-30 are typically most useful.
   saga_winblend = 10,
@@ -32,6 +33,9 @@ lsp_saga.init_lsp_saga({
   symbol_in_winbar = {
     in_custom = false, -- enable later when LSPs support documentSymbol
     enable = true,
+    separator = ' ',
+    show_file = true,
+    click_support = false,
   },
   code_action_icon = "💡",
   code_action_num_shortcut = true,
@@ -39,6 +43,10 @@ lsp_saga.init_lsp_saga({
     sign = false,
     enable = true,
     virtual_text = true,
+    enable_in_insert = true,
+    cache_code_action = true,
+    update_time = 150,
+    sign_priority = 20,
   },
   code_action_keys = {
     quit = "q",
