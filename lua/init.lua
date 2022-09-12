@@ -159,6 +159,7 @@ plug.register('echasnovski/mini.nvim')
 plug.register('kosayoda/nvim-lightbulb')
 plug.register('mortepau/codicons.nvim')
 plug.register('lewis6991/impatient.nvim')
+plug.register('windwp/nvim-ts-autotag')
 -- end lua plugins
 
 plug.register('pantharshit00/vim-prisma')
