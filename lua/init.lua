@@ -107,6 +107,7 @@ plug.register('kyazdani42/nvim-tree.lua')
 plug.register('norcalli/nvim-colorizer.lua')
 plug.register('nvim-treesitter/nvim-treesitter', { ['do'] = ':TSUpdate' })
 plug.register('nvim-treesitter/nvim-treesitter-context')
+plug.register('JoosepAlviste/nvim-ts-context-commentstring')
 
 -- LSP
 plug.register('jose-elias-alvarez/null-ls.nvim')
@@ -307,11 +308,18 @@ require('nvim-treesitter.configs').setup({
     -- Instead of true it can also be a list of languages
     additional_vim_regex_highlighting = false,
   },
-})
 
-require('mini.cursorword').setup({
-  -- Delay (in ms) between when cursor moved and when highlighting appeared
-  delay = 300,
+  autotag = {
+    enable = true,
+  },
+
+  indent = {
+    enable = true
+  },
+
+  context_commentstring = {
+    enable = true
+  },
 })
 
 require('.lsp')
