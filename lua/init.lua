@@ -53,6 +53,8 @@ vim.opt.listchars = { -- Show non-printable characters
   precedes = '«',
 }
 vim.opt.updatetime = 300 -- Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable delays and poor user experience.
+vim.opt.shortmess:append 'c'
+vim.opt.formatoptions:remove 't' -- do not automatically wrap text when typing
 
 -- Do not source the default filetype.vim|lua, using nathom/filetype.nvim
 vim.g.did_load_filetypes = 1
@@ -62,9 +64,6 @@ vim.g.loaded_python3_provider = 0
 vim.g.loaded_node_provider = 0
 vim.g.loaded_ruby_provider = 0
 vim.g.loaded_perl_provider = 0
-
-vim.opt.shortmess:append 'c'
-vim.opt.formatoptions:remove 't' -- do not automatically wrap text when typing
 
 -- undercurl support
 vim.o.t_Cs = [[\e[4:3m]]
