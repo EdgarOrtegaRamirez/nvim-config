@@ -10,10 +10,10 @@ local gitsigns = require('gitsigns')
 local persistence = require('persistence')
 
 -- Disable arrow navigation keys. Use hjkl
-vim.keymap.set({"i", "n"}, "<UP>", "<NOP>", { silent = true })
-vim.keymap.set({"i", "n"}, "<DOWn>", "<NOP>", { silent = true })
-vim.keymap.set({"i", "n"}, "<LEFT>", "<NOP>", { silent = true })
-vim.keymap.set({"i", "n"}, "<RIGHT>", "<NOP>", { silent = true })
+vim.keymap.set({ "i", "n" }, "<UP>", "<NOP>", { silent = true })
+vim.keymap.set({ "i", "n" }, "<DOWn>", "<NOP>", { silent = true })
+vim.keymap.set({ "i", "n" }, "<LEFT>", "<NOP>", { silent = true })
+vim.keymap.set({ "i", "n" }, "<RIGHT>", "<NOP>", { silent = true })
 
 wk.setup({})
 
@@ -83,9 +83,6 @@ wk.register({
       U = { plug.upgrade_plug, 'Upgrade Plug (manager)' },
     },
   },
-  ['[x'] = { git_conflict.go_to_prev, 'Previous Git Conflict' },
-  [']x'] = { git_conflict.go_to_next, 'Next Git Conflict' },
-  ['<C-n>'] = { nvimtree.toggl_tree, 'Toggle tree' },
   t = {
     name = 'Tabs / Vim-Test',
     h = { tabs.go_to_first, 'First tab', silent = true, noremap = true },
@@ -100,22 +97,22 @@ wk.register({
     ['<C-l>'] = { function() vim.cmd('TestLast') end, 'Test last', silent = true, },
     ['<C-g>'] = { function() vim.cmd('TestVisit') end, 'Test visit', silent = true, },
   },
+  ['[x'] = { git_conflict.go_to_prev, 'Previous Git Conflict' },
+  [']x'] = { git_conflict.go_to_next, 'Next Git Conflict' },
+  ['<C-n>'] = { nvimtree.toggl_tree, 'Toggle tree' },
+  ['<C-f>'] = { '<PLUG>(operator-esearch-prefill)', 'Prefill search', noremap = false },
+  ['<C-f><C-f>'] = { '<PLUG>(esearch)', 'Search and Replace in folder', silent = true },
 })
 
 -- vim-test
 vim.g['test#strategy'] = 'dispatch'
 
-local hlslens_opts = { noremap = true, silent = true }
--- local opts = { noremap = true, silent = true }
-local saga_opts = { noremap = true, silent = true }
+local opts = { noremap = true, silent = true }
 
 -- hlslens - search
-vim.keymap.set('n', 'n', [[<Cmd>execute('normal! ' . v:count1 . 'n')<cr><Cmd>lua require('hlslens').start()<cr>]],
-  hlslens_opts)
-vim.keymap.set('n', 'N', [[<Cmd>execute('normal! ' . v:count1 . 'N')<cr><Cmd>lua require('hlslens').start()<cr>]],
-  hlslens_opts)
-vim.keymap.set('n', '*', [[*<Cmd>lua require('hlslens').start()<cr>]], hlslens_opts)
-
+vim.keymap.set('n', 'n', [[<Cmd>execute('normal! ' . v:count1 . 'n')<cr><Cmd>lua require('hlslens').start()<cr>]], opts)
+vim.keymap.set('n', 'N', [[<Cmd>execute('normal! ' . v:count1 . 'N')<cr><Cmd>lua require('hlslens').start()<cr>]], opts)
+vim.keymap.set('n', '*', [[*<Cmd>lua require('hlslens').start()<cr>]], opts)
 
 -- Mappings.
 
@@ -129,7 +126,7 @@ vim.keymap.set('n', '*', [[*<Cmd>lua require('hlslens').start()<cr>]], hlslens_o
 -- vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
 -- vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
 -- vim.keymap.set('n', '<Leader>lr', vim.lsp.buf.rename, opts)
--- vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, saga_opts)
+-- vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts)
 -- vim.keymap.set('n', '<Leader>le', vim.lsp.diagnostic.show_line_diagnostics, opts)
 -- vim.keymap.set('n', '[d', vim.lsp.diagnostic.goto_prev, opts)
 -- vim.keymap.set('n', ']d', vim.lsp.diagnostic.goto_next, opts)
@@ -137,9 +134,9 @@ vim.keymap.set('n', '*', [[*<Cmd>lua require('hlslens').start()<cr>]], hlslens_o
 
 -- Definition preview
 vim.keymap.set("n", "gd", lsp.peek_definition, { silent = true })
-vim.keymap.set('n', 'gD', vim.lsp.buf.definition, saga_opts)
+vim.keymap.set('n', 'gD', vim.lsp.buf.definition, opts)
 -- format file
-vim.keymap.set('n', '<space>f', lsp.format_file, saga_opts)
+vim.keymap.set('n', '<space>f', lsp.format_file, opts)
 
 -- Lsp finder find the symbol definition implement reference
 -- when you use action in finder like open vsplit then you can
@@ -148,7 +145,7 @@ vim.keymap.set('n', '<space>f', lsp.format_file, saga_opts)
 vim.keymap.set("n", "gh", lsp.finder, { silent = true })
 
 -- Code action
-vim.keymap.set({"n", "v"}, "<leader>ca", lsp.code_actions, { silent = true })
+vim.keymap.set({ "n", "v" }, "<leader>ca", lsp.code_action, { silent = true })
 
 -- Rename
 vim.keymap.set("n", "gr", lsp.rename, { silent = true })
@@ -163,19 +160,5 @@ vim.keymap.set("n", "<leader>cd", lsp.diagnostic.show_line_diagnostics, { silent
 vim.keymap.set("n", "[e", lsp.diagnostic.go_to_prev, { silent = true })
 vim.keymap.set("n", "]e", lsp.diagnostic.go_to_next, { silent = true })
 
--- Outline
--- vim.keymap.set("n", "<leader>o", lsp.toggle_outline, { silent = true })
-
--- Hover Doc
--- vim.keymap.set("n", "K", lsp.hover_doc, { silent = true })
-
--- Float terminal
--- vim.keymap.set("n", "<A-d>", lsp.terminal.open, { silent = true })
--- if you want pass somc cli command into terminal you can do like this
--- open lazygit in lspsaga float terminal
--- vim.keymap.set("n", "<A-d>", "<cmd>Lspsaga open_floaterm lazygit<CR>", { silent = true })
-
--- local saga_opts = { silent = true, noremap = true }
--- -- vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, saga_opts)
 -- -- scroll down hover doc or scroll in definition preview
--- vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, saga_opts)
+-- vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)

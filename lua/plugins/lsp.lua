@@ -6,7 +6,7 @@ end
 
 M.finder = make_saga_fn('lsp_finder')
 
-M.code_actions = make_saga_fn('code_action')
+M.code_action = make_saga_fn('code_action')
 
 M.rename = make_saga_fn('rename')
 
