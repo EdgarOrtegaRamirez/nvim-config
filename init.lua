@@ -190,7 +190,9 @@ require('stabilize').setup()
 local gitsigns = require('gitsigns')
 gitsigns.setup({})
 
-require('Comment').setup({})
+require('Comment').setup({
+  pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
+})
 
 require('surround').setup({ mappings_style = 'surround' })
 
@@ -313,11 +315,12 @@ require('nvim-treesitter.configs').setup({
   },
 
   indent = {
-    enable = true
+    enable = true,
   },
 
   context_commentstring = {
-    enable = true
+    enable = true,
+    enable_autocmd = false,
   },
 })
 
