@@ -108,6 +108,7 @@ plug.register('kyazdani42/nvim-tree.lua')
 plug.register('norcalli/nvim-colorizer.lua')
 plug.register('nvim-treesitter/nvim-treesitter', { ['do'] = ':TSUpdate' })
 plug.register('nvim-treesitter/nvim-treesitter-context')
+plug.register('JoosepAlviste/nvim-ts-context-commentstring')
 plug.register('windwp/nvim-ts-autotag')
 
 -- LSP
@@ -312,6 +313,10 @@ require('nvim-treesitter.configs').setup({
   },
 
   indent = {
+    enable = true
+  },
+
+  context_commentstring = {
     enable = true
   },
 })
