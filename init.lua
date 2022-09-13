@@ -4,7 +4,7 @@
 local plug = require('.plugins.plug')
 
 -- Use comma as the leader key
-vim.g.mapleader = ","
+vim.g.mapleader = ','
 
 -- vim.opt.syntax = 'ON' -- enabled by default
 vim.opt.completeopt = { 'menuone', 'noinsert', 'noselect' } -- Completion options
@@ -157,15 +157,12 @@ plug.register('beauwilliams/focus.nvim')
 plug.register('kevinhwang91/nvim-hlslens')
 plug.register('akinsho/git-conflict.nvim')
 plug.register('echasnovski/mini.nvim')
--- plug.register('kosayoda/nvim-lightbulb')
 plug.register('mortepau/codicons.nvim')
 plug.register('lewis6991/impatient.nvim')
 -- end lua plugins
 
--- plug.register('pantharshit00/vim-prisma')
 plug.register('janko-m/vim-test')
 plug.register('eugen0329/vim-esearch')
--- plug.register('editorconfig/editorconfig-vim')
 plug.register('tpope/vim-git')
 plug.register('tpope/vim-fugitive')
 plug.register('tpope/vim-dispatch')
@@ -173,8 +170,6 @@ plug.register('christoomey/vim-tmux-navigator')
 plug.register('ntpeters/vim-better-whitespace')
 plug.register('mileszs/ack.vim')
 plug.register('tpope/vim-rails')
--- plug.register('sainnhe/gruvbox-material')
--- plug.register('eddyekofo94/gruvbox-flat.nvim')
 plug.register('tpope/vim-repeat')
 -- plug.register('andymass/vim-matchup')
 
@@ -321,18 +316,15 @@ require('nvim-treesitter.configs').setup({
   },
 })
 
-vim.o.foldmethod = 'expr'
-vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
-
 -- Display vertical column at 120 characters
 vim.cmd([[highlight ColorColumn ctermbg=8]])
 
--- Spell check for Markdown and Git commit messages
+-- Spell check for Markdown and Git messages
 vim.api.nvim_create_autocmd(
-  { "FileType" },
+  { 'FileType' },
   {
-    pattern = { "markdown", "text", "gitcommit", "gitrebase" },
-    command = "setlocal spell"
+    pattern = { 'markdown', 'text', 'gitcommit', 'gitrebase' },
+    command = 'setlocal spell'
   }
 )
 
