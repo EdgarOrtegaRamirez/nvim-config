@@ -1,7 +1,8 @@
 -- Debug with
 -- print(vim.inspect(var))
 
-local plug = require('.plugins.plug')
+-- Speed up loading Lua modules to improve startup time.
+pcall(require, 'impatient')
 
 -- Use comma as the leader key
 vim.g.mapleader = ','
@@ -93,6 +94,7 @@ vim.g.esearch = {
 }
 
 -- VimPlug
+local plug = require('.plugins.plug')
 plug.begin('~/.local/share/nvim/plugged')
 
 -- start lua plugins
@@ -175,9 +177,6 @@ plug.register('tpope/vim-repeat')
 -- plug.register('andymass/vim-matchup')
 
 plug.finalize()
-
--- Speed up loading Lua modules to improve startup time.
-require('impatient')
 
 require('.ui')
 
