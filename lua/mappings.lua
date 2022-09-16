@@ -10,10 +10,10 @@ local gitsigns = require('gitsigns')
 local persistence = require('persistence')
 
 -- Disable arrow navigation keys. Use hjkl
-vim.keymap.set({ "i", "n" }, "<UP>", "<NOP>", { silent = true })
-vim.keymap.set({ "i", "n" }, "<DOWn>", "<NOP>", { silent = true })
-vim.keymap.set({ "i", "n" }, "<LEFT>", "<NOP>", { silent = true })
-vim.keymap.set({ "i", "n" }, "<RIGHT>", "<NOP>", { silent = true })
+vim.keymap.set({ 'v', 'i', 'n' }, '<UP>', '<NOP>', { silent = true })
+vim.keymap.set({ 'v', 'i', 'n' }, '<DOWn>', '<NOP>', { silent = true })
+vim.keymap.set({ 'v', 'i', 'n' }, '<LEFT>', '<NOP>', { silent = true })
+vim.keymap.set({ 'v', 'i', 'n' }, '<RIGHT>', '<NOP>', { silent = true })
 
 wk.setup({})
 
