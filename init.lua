@@ -47,6 +47,7 @@ vim.opt.incsearch = true -- Highlight while searching with / or ?
 vim.opt.hlsearch = true -- Keep matches highlighted
 vim.opt.showcmd = true -- Show already typed keys when more are expected
 vim.opt.laststatus = 3 -- force the status line and tab line to always display
+vim.opt.cursorline = true -- show cursor line
 vim.opt.clipboard = 'unnamedplus' -- :h clipboard-unnamedplus
 vim.opt.spellsuggest = 'best,9' -- Show nine spell checking candidates at most
 vim.opt.listchars = { -- Show non-printable characters
