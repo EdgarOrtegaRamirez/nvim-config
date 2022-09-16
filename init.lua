@@ -59,8 +59,8 @@ vim.opt.listchars = { -- Show non-printable characters
   precedes = '«',
 }
 vim.opt.updatetime = 300 -- Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable delays and poor user experience.
-vim.opt.shortmess:append 'c'
-vim.opt.formatoptions:remove 't' -- do not automatically wrap text when typing
+vim.opt.shortmess:append('c')
+vim.opt.formatoptions:remove('t') -- do not automatically wrap text when typing
 
 -- Do not source the default filetype.vim|lua, using nathom/filetype.nvim
 vim.g.did_load_filetypes = 1
@@ -215,7 +215,7 @@ require('nvim-tree').setup({
       enable = true,
     },
     special_files = { 'Gemfile', 'Makefile', 'README.md', 'readme.md', '.node-version', '.nvmrc' },
-  }
+  },
 })
 
 local telescope = require('telescope')
@@ -223,7 +223,7 @@ telescope.setup({
   color_devicons = true,
   extensions = {
     ['ui-select'] = {
-      require('telescope.themes').get_dropdown({})
+      require('telescope.themes').get_dropdown({}),
     },
   },
 })
@@ -280,9 +280,23 @@ require('treesitter-context').setup({})
 
 require('nvim-treesitter.configs').setup({
   -- A list of parser names, or 'all'
-  ensure_installed = { 'bash', 'css', 'dockerfile', 'html', 'javascript', 'jsdoc', 'json', 'jsonc', 'json5', 'lua',
+  ensure_installed = {
+    'bash',
+    'css',
+    'dockerfile',
+    'html',
+    'javascript',
+    'jsdoc',
+    'json',
+    'jsonc',
+    'json5',
+    'lua',
     'markdown',
-    'ruby', 'typescript', 'vim', 'yaml' },
+    'ruby',
+    'typescript',
+    'vim',
+    'yaml',
+  },
 
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = false,
@@ -328,13 +342,10 @@ require('nvim-treesitter.configs').setup({
 vim.cmd([[highlight ColorColumn ctermbg=8]])
 
 -- Spell check for Markdown and Git messages
-vim.api.nvim_create_autocmd(
-  { 'FileType' },
-  {
-    pattern = { 'markdown', 'text', 'gitcommit', 'gitrebase' },
-    command = 'setlocal spell'
-  }
-)
+vim.api.nvim_create_autocmd({ 'FileType' }, {
+  pattern = { 'markdown', 'text', 'gitcommit', 'gitrebase' },
+  command = 'setlocal spell',
+})
 
 require('.lsp')
 require('.completion')

@@ -42,8 +42,14 @@ wk.register({
         name = 'Workspace',
         a = { vim.lsp.buf.add_workspace_folder, 'Add Workspace folder', silent = true, noremap = true },
         d = { vim.lsp.buf.remove_workspace_folder, 'Remvoe Workspace folder', silent = true, noremap = true },
-        l = { function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end, 'List Workspace folders',
-          silent = true, noremap = true },
+        l = {
+          function()
+            print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+          end,
+          'List Workspace folders',
+          silent = true,
+          noremap = true,
+        },
       },
     },
   },
@@ -60,12 +66,22 @@ wk.register({
     s = {
       name = 'Sessions',
       r = { persistence.load, 'Restore the session for the current directory' },
-      l = { function() persistence.load({ last = true }) end, 'Restore the last session' },
+      l = {
+        function()
+          persistence.load({ last = true })
+        end,
+        'Restore the last session',
+      },
       s = { persistence.stop, 'Stop plugin, session will not be saved' },
     },
     g = {
       name = 'Git',
-      b = { function() gitsigns.blame_line({ full = true }) end, 'Blame line' },
+      b = {
+        function()
+          gitsigns.blame_line({ full = true })
+        end,
+        'Blame line',
+      },
       d = { gitsigns.diffthis, 'Diff' },
     },
     t = {
@@ -91,11 +107,41 @@ wk.register({
     l = { tabs.go_to_last, 'Last tab', silent = true, noremap = true },
     c = { tabs.close, 'Close tab', silent = true, noremap = true },
     n = { tabs.new, 'New tab', silent = true, noremap = true },
-    ['<C-n>'] = { function() vim.cmd('TestNearest') end, 'Test nearest', silent = true, },
-    ['<C-f>'] = { function() vim.cmd('TestFile') end, 'Test file', silent = true, },
-    ['<C-s>'] = { function() vim.cmd('TestSuite') end, 'Test suite', silent = true, },
-    ['<C-l>'] = { function() vim.cmd('TestLast') end, 'Test last', silent = true, },
-    ['<C-g>'] = { function() vim.cmd('TestVisit') end, 'Test visit', silent = true, },
+    ['<C-n>'] = {
+      function()
+        vim.cmd('TestNearest')
+      end,
+      'Test nearest',
+      silent = true,
+    },
+    ['<C-f>'] = {
+      function()
+        vim.cmd('TestFile')
+      end,
+      'Test file',
+      silent = true,
+    },
+    ['<C-s>'] = {
+      function()
+        vim.cmd('TestSuite')
+      end,
+      'Test suite',
+      silent = true,
+    },
+    ['<C-l>'] = {
+      function()
+        vim.cmd('TestLast')
+      end,
+      'Test last',
+      silent = true,
+    },
+    ['<C-g>'] = {
+      function()
+        vim.cmd('TestVisit')
+      end,
+      'Test visit',
+      silent = true,
+    },
   },
   ['[x'] = { git_conflict.go_to_prev, 'Previous Git Conflict' },
   [']x'] = { git_conflict.go_to_next, 'Next Git Conflict' },
@@ -133,7 +179,7 @@ vim.keymap.set('n', '*', [[*<Cmd>lua require('hlslens').start()<cr>]], opts)
 -- vim.keymap.set('n', '<Leader>lq', vim.lsp.diagnostic.set_loclist, opts)
 
 -- Definition preview
-vim.keymap.set("n", "gd", lsp.peek_definition, { silent = true })
+vim.keymap.set('n', 'gd', lsp.peek_definition, { silent = true })
 vim.keymap.set('n', 'gD', vim.lsp.buf.definition, opts)
 -- format file
 vim.keymap.set('n', '<space>f', lsp.format_file, opts)
@@ -141,24 +187,24 @@ vim.keymap.set('n', '<space>f', lsp.format_file, opts)
 -- Lsp finder find the symbol definition implement reference
 -- when you use action in finder like open vsplit then you can
 -- use <C-t> to jump back
--- vim.keymap.set("n", "gh", function() vim.cmd('Lspsaga lsp_finder') end, { silent = true })
-vim.keymap.set("n", "gh", lsp.finder, { silent = true })
+-- vim.keymap.set('n', 'gh', function() vim.cmd('Lspsaga lsp_finder') end, { silent = true })
+vim.keymap.set('n', 'gh', lsp.finder, { silent = true })
 
 -- Code action
-vim.keymap.set({ "n", "v" }, "<leader>ca", lsp.code_action, { silent = true })
+vim.keymap.set({ 'n', 'v' }, '<leader>ca', lsp.code_action, { silent = true })
 
 -- Rename
-vim.keymap.set("n", "gr", lsp.rename, { silent = true })
+vim.keymap.set('n', 'gr', lsp.rename, { silent = true })
 
 -- Show line diagnostics
-vim.keymap.set("n", "<leader>cd", lsp.diagnostic.show_line_diagnostics, { silent = true })
+vim.keymap.set('n', '<leader>cd', lsp.diagnostic.show_line_diagnostics, { silent = true })
 
 -- Show cursor diagnostic (disabled because we are using line diagnostics)
--- vim.keymap.set("n", "<leader>cd", "<cmd>Lspsaga show_cursor_diagnostics<CR>", { silent = true })
+-- vim.keymap.set('n', '<leader>cd', '<cmd>Lspsaga show_cursor_diagnostics<CR>', { silent = true })
 
 -- Diagnsotic jump can use `<c-o>` to jump back
-vim.keymap.set("n", "[e", lsp.diagnostic.go_to_prev, { silent = true })
-vim.keymap.set("n", "]e", lsp.diagnostic.go_to_next, { silent = true })
+vim.keymap.set('n', '[e', lsp.diagnostic.go_to_prev, { silent = true })
+vim.keymap.set('n', ']e', lsp.diagnostic.go_to_next, { silent = true })
 
 -- -- scroll down hover doc or scroll in definition preview
 -- vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)

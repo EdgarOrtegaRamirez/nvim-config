@@ -1,23 +1,23 @@
 -- UI / color scheme / theme
-vim.o.background = "dark"
+vim.o.background = 'dark'
 
-vim.g.catppuccin_flavour = "mocha"
+vim.g.catppuccin_flavour = 'mocha'
 -- latte (light)
 -- frappe (dark)
 -- macchiato (darker)
 -- mocha (darkest)
 
-require("catppuccin").setup({
+require('catppuccin').setup({
   term_colors = true,
   transparent_background = false,
   dim_inactive = {
     enabled = false,
-    shade = "dark",
+    shade = 'dark',
     percentage = 0.15,
   },
   styles = {
-    comments = { "italic" },
-    conditionals = { "italic" },
+    comments = { 'italic' },
+    conditionals = { 'italic' },
     loops = {},
     functions = {},
     keywords = {},
@@ -26,7 +26,7 @@ require("catppuccin").setup({
     numbers = {},
     booleans = {},
     properties = {},
-    types = { "italic" },
+    types = { 'italic' },
     operators = {},
   },
   integrations = {
@@ -35,16 +35,16 @@ require("catppuccin").setup({
     native_lsp = {
       enabled = true,
       virtual_text = {
-        errors = { "italic" },
-        hints = { "italic" },
-        warnings = { "italic" },
-        information = { "italic" },
+        errors = { 'italic' },
+        hints = { 'italic' },
+        warnings = { 'italic' },
+        information = { 'italic' },
       },
       underlines = {
-        errors = { "undercurl" },
-        hints = { "undercurl" },
-        warnings = { "undercurl" },
-        information = { "undercurl" },
+        errors = { 'undercurl' },
+        hints = { 'undercurl' },
+        warnings = { 'undercurl' },
+        information = { 'undercurl' },
       },
     },
     -- coc_nvim = false,
@@ -117,18 +117,15 @@ require('dressing').setup({
   select = {
     enabled = true,
     -- Priority list of preferred vim.select implementations
-    backend = { "telescope", "nui", "fzf_lua", "fzf", "builtin" },
-  }
+    backend = { 'telescope', 'nui', 'fzf_lua', 'fzf', 'builtin' },
+  },
 })
 
-require('colorizer').setup(
-  {
-    '*'; -- Highlight all files
-    '[Plugins]'; -- exclude vim plug
-    css = { css = true; };
-  },
-  { mode = 'background' }
-)
+require('colorizer').setup({
+  '*', -- Highlight all files
+  '[Plugins]', -- exclude vim plug
+  css = { css = true },
+}, { mode = 'background' })
 
 local wilder = require('wilder')
 wilder.setup({ modes = { ':', '/', '?' } })
