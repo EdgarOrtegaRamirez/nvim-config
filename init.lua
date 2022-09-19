@@ -163,6 +163,7 @@ plug.register('akinsho/git-conflict.nvim')
 plug.register('echasnovski/mini.nvim')
 plug.register('mortepau/codicons.nvim')
 plug.register('lewis6991/impatient.nvim')
+plug.register('windwp/nvim-autopairs')
 -- end lua plugins
 
 plug.register('janko-m/vim-test')
@@ -345,6 +346,16 @@ vim.cmd([[highlight ColorColumn ctermbg=8]])
 vim.api.nvim_create_autocmd({ 'FileType' }, {
   pattern = { 'markdown', 'text', 'gitcommit', 'gitrebase' },
   command = 'setlocal spell',
+})
+
+require("nvim-autopairs").setup({
+  disable_filetype = { "TelescopePrompt", "vim" },
+  -- disable when recording or executing a macro
+  disable_in_macro = true,
+  -- use treesitter to check for a pair
+  check_ts = true,
+  -- Don't add pairs if it already has a close pair in the same line
+  enable_check_bracket_line = false,
 })
 
 require('.lsp')
